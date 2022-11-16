@@ -42,5 +42,11 @@ $('body').on('click', '.delete', function(event) {
 
 /* search */
 $searchArea.on('keyup', function(event) {
-	console.log($searchArea.val());
+	let $searchingItem = $(`tr:contains(${$searchArea.val()})`);
+	if ($searchArea.val() !== '') {
+		$('.search-list tbody tr').hide();
+		$searchingItem.show();
+	} else {
+		$('.search-list tbody tr').show();
+	}
 })
