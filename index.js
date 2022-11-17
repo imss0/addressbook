@@ -5,12 +5,12 @@ const $listArea = $('.search-list tbody');
 const $searchArea = $('input.search');
 
 /* add contact */
-const itemFactory = (items) => {
+const itemFactory = (item) => {
   return {
-		firstName: items[0].value,
-		lastName: items[1].value,
-		phone: items[2].value,
-		address: items[3].value,
+		firstName: item[0].value,
+		lastName: item[1].value,
+		phone: item[2].value,
+		address: item[3].value,
 		id: itemId++,
 	};
 };
@@ -33,7 +33,7 @@ $form.on('submit', function(event){
 
 
 
-// Referred this from : 
+// Referred this from : https://myhappyman.tistory.com/39
 $('input[onlyNumber]').on('keyup', function () {
 	$(this).val($(this).val().replace(/[^0-9 -]/g, ""));
 });
@@ -44,21 +44,21 @@ $('body').on('click', '.delete', function(event) {
 	event.preventDefault();
 	let $itemToDelete = $(event.target);
 	$itemToDelete.parent().parent().empty();
-  lists = lists.filter(item => item.id !== Number($itemToDelete[0].id)) // Referred this idea from : 
+  lists = lists.filter(item => item.id !== Number($itemToDelete[0].id)) // Referred this line(delete from array) from : https://gobae.tistory.com/20
 });
 
 
-/* search */
+/* search contact*/
 // https://stackoverflow.com/questions/8746882/jquery-contains-selector-uppercase-and-lower-case-issue
 // I customized 'contains' method by referring to this link.
 jQuery.expr[':'].contains = function(a,i,m){
 	return jQuery(a).text().toUpperCase().replaceAll(' ', '').slice(0, -6).indexOf(m[3].toUpperCase().replaceAll(' ', ''))>=0;
 };
 
-$searchArea.on('keyup', function(event) {
+$searchArea.on('keyup', function(event) { // I attached event on dynamic element by referring to this :  https://stackoverflow.com/questions/1359018/how-do-i-attach-events-to-dynamic-html-elements-with-jquery
 	let $searchingItem = $(`tbody tr:contains(${$searchArea.val()})`);
 	if ($searchArea.val() !== '') {
-		$('.search-list tbody tr').hide(); // Referred this idea from: 
+		$('.search-list tbody tr').hide();
 			$searchingItem.show();
 	} else {
 		$('.search-list tbody tr').show();
