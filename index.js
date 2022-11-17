@@ -32,6 +32,8 @@ $form.on('submit', function(event){
 })
 
 
+
+// Referred this from : 
 $('input[onlyNumber]').on('keyup', function () {
 	$(this).val($(this).val().replace(/[^0-9 -]/g, ""));
 });
@@ -42,17 +44,27 @@ $('body').on('click', '.delete', function(event) {
 	event.preventDefault();
 	let $itemToDelete = $(event.target);
 	$itemToDelete.parent().parent().empty();
-  lists = lists.filter(item => item.id !== Number($itemToDelete[0].id))
+  lists = lists.filter(item => item.id !== Number($itemToDelete[0].id)) // Referred this idea from : 
 });
 
 
 /* search */
+// https://stackoverflow.com/questions/8746882/jquery-contains-selector-uppercase-and-lower-case-issue
+// I customized 'contains' method by referring to this link.
+jQuery.expr[':'].contains = function(a,i,m){
+	return jQuery(a).text().toUpperCase().replaceAll(' ', '').slice(0, -6).indexOf(m[3].toUpperCase().replaceAll(' ', ''))>=0;
+};
+
 $searchArea.on('keyup', function(event) {
-	let $searchingItem = $(`tr:contains(${$searchArea.val()})`);
+	let $searchingItem = $(`tbody tr:contains(${$searchArea.val()})`);
 	if ($searchArea.val() !== '') {
-		$('.search-list tbody tr').hide();
-		$searchingItem.show();
+		$('.search-list tbody tr').hide(); // Referred this idea from: 
+			$searchingItem.show();
 	} else {
 		$('.search-list tbody tr').show();
 	}
 })
+
+
+
+
