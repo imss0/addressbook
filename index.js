@@ -31,12 +31,18 @@ $form.on('submit', function(event){
 	$inputs.val('');
 })
 
+
+$('input[onlyNumber]').on('keyup', function () {
+	$(this).val($(this).val().replace(/[^0-9 -]/g, ""));
+});
+
+
 /* delete contact */
 $('body').on('click', '.delete', function(event) {
 	event.preventDefault();
 	let $itemToDelete = $(event.target);
 	$itemToDelete.parent().parent().empty();
-  lists = lists.filter(item => item.id !== Number($itemToDelete[0].id)) // I referred this line from ~
+  lists = lists.filter(item => item.id !== Number($itemToDelete[0].id))
 });
 
 
