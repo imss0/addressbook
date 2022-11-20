@@ -12,8 +12,12 @@
 <body>
   <header>
     <h1>Address Book</h1>
+    <button class="add">
+      <i class="fa-solid fa-plus" id="plus"></i>
+    </button>
   </header>
   <main>
+    <!---
     <section class="add">
       <h2>Add Contact</h2>
       <form id="add-contact">
@@ -24,8 +28,20 @@
         <button class="save" type="submit">save</button>
       </form>
     </section>
+    -->
+    <section class="edit-wrap">
+      <div class="edit">
+        <div class="inputs">
+          <input id=“first-name” type=“text” placeholder="First name" required/>
+          <input id=“last-name” type=“text” placeholder="Last name" required/>
+          <input id=“phone” type=“tel” placeholder="Phone number" onlyNumber required/>
+          <input id=“address” type=“text” placeholder="Address" required/>
+        </div>
+        <button class="save" type="submit">save</button>
+      </div>
+    </section>
     <section class="search-list">
-      <h2>Contacts</h2>
+      <!-- <h2>Contacts</h2> -->
       <section class="search">
         <i class="fas fa-search"></i>
         <input type="text" placeholder="Search" class="search">
@@ -37,6 +53,7 @@
             <th scope="col">Last name</th>
             <th scope="col">Phone number</th>
             <th scope="col">Address</th>
+            <th scope="col"></th>
             <th scope="col"></th>
           </tr>
         </thead>

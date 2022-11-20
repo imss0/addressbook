@@ -16,7 +16,7 @@ const itemFactory = (item) => {
 };
 
 const drawItem = (lists) => {
-  let $newItemHtml = $(`<tr><td scope="row">${lists[lists.length - 1].firstName}</td><td scope="row">${lists[lists.length - 1].lastName}</td><td scope="row">${lists[lists.length - 1].phone}</td><td scope="row">${lists[lists.length - 1].address}</td><td scope="row"><button class="delete">delete</button></td></tr>`);
+  let $newItemHtml = $(`<tr><td scope="row">${lists[lists.length - 1].firstName}</td><td scope="row">${lists[lists.length - 1].lastName}</td><td scope="row">${lists[lists.length - 1].phone}</td><td scope="row">${lists[lists.length - 1].address}</td><td scope="row"><button class="edit">edit</button></td><td scope="row"><button class="delete">delete</button></td></tr>`);
   let $deleteBtn = $($newItemHtml[0].childNodes[4].childNodes[0]);
   $deleteBtn.attr('id', `${lists[lists.length - 1].id}`);
   $newItemHtml.appendTo($listArea);
@@ -55,7 +55,11 @@ jQuery.expr[':'].contains = function(a,i,m){
 	return jQuery(a).text().toUpperCase().replaceAll(' ', '').slice(0, -6).indexOf(m[3].toUpperCase().replaceAll(' ', ''))>=0;
 };
 
-$searchArea.on('keyup', function(event) { // I attached event on dynamic element by referring to this :  https://stackoverflow.com/questions/1359018/how-do-i-attach-events-to-dynamic-html-elements-with-jquery
+
+// Referred this from : 
+// https://stackoverflow.com/questions/1359018/how-do-i-attach-events-to-dynamic-html-elements-with-jquery
+// https://makitweb.com/jquery-search-text-in-the-element-with-contains-selector/
+$searchArea.on('keyup', function(event) {
 	let $searchingItem = $(`tbody tr:contains(${$searchArea.val()})`);
 	if ($searchArea.val() !== '') {
 		$('.search-list tbody tr').hide();
