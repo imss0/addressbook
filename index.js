@@ -1,35 +1,46 @@
 let lists = [];
 let itemId = 0;
-const $form = $('#add-contact');
-const $listArea = $('.search-list tbody');
-const $searchArea = $('input.search');
+const $form = $("#add-contact");
+const $listArea = $(".search-list tbody");
+const $searchArea = $("input.search");
 
 /* add contact */
 const itemFactory = (item) => {
   return {
-		firstName: item[0].value,
-		lastName: item[1].value,
-		phone: item[2].value,
-		address: item[3].value,
-		id: itemId++,
-	};
+    firstName: item[0].value,
+    lastName: item[1].value,
+    phone: item[2].value,
+    address: item[3].value,
+    id: itemId++,
+  };
 };
 
 const drawItem = (lists) => {
-  let $newItemHtml = $(`<tr><td scope="row">${lists[lists.length - 1].firstName}</td><td scope="row">${lists[lists.length - 1].lastName}</td><td scope="row">${lists[lists.length - 1].phone}</td><td scope="row">${lists[lists.length - 1].address}</td><td scope="row"><button class="edit">edit</button></td><td scope="row"><button class="delete">delete</button></td></tr>`);
+  let $newItemHtml = $(
+    `<tr><td scope="row">${
+      lists[lists.length - 1].firstName
+    }</td><td scope="row">${
+      lists[lists.length - 1].lastName
+    }</td><td scope="row">${
+      lists[lists.length - 1].phone
+    }</td><td scope="row">${
+      lists[lists.length - 1].address
+    }</td><td scope="row"><button class="edit">edit</button></td><td scope="row"><button class="delete">delete</button></td></tr>`
+  );
   let $deleteBtn = $($newItemHtml[0].childNodes[4].childNodes[0]);
-  $deleteBtn.attr('id', `${lists[lists.length - 1].id}`);
+  $deleteBtn.attr("id", `${lists[lists.length - 1].id}`);
   $newItemHtml.appendTo($listArea);
-}
+};
 
-$form.on('submit', function(event){
-	event.preventDefault();
-  let $inputs = $(this).find('input');
+$form.on("submit", function (event) {
+  event.preventDefault();
+  let $inputs = $(this).find("input");
   let newItem = itemFactory($inputs);
   lists.push(newItem);
   drawItem(lists);
-	$inputs.val('');
-})
+  $inputs.val("");
+});
+
 
 
 
@@ -62,7 +73,7 @@ jQuery.expr[':'].contains = function(a,i,m){
 $searchArea.on('keyup', function(event) {
 	let $searchingItem = $(`tbody tr:contains(${$searchArea.val()})`);
 	if ($searchArea.val() !== '') {
-		$('.search-list tbody tr').hide();
+		$('.search-list tbody tr').hide();		
 			$searchingItem.show();
 	} else {
 		$('.search-list tbody tr').show();

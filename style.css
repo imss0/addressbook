@@ -42,8 +42,8 @@ button.add {
 
 #plus {
     font-size: 20px;
-    color: #FFFFFF;
     position: relative;
+    color: #FFFFFF;
     top: 0px;
     left: 0px;
 }
@@ -115,7 +115,7 @@ button {
     font-weight: 400;
     width: 75px;
     background-color: #0A80F7;
-    color:  #ffffff;
+    color: #ffffff;
     border: 0;
     padding: 10px;
     margin: 0 auto;
@@ -126,7 +126,7 @@ button {
 
 button:hover {
     background-color: #2C2C2D;
-    color:  #0A80F7;
+    color: #0A80F7;
     font-weight: 700;
 }
 
@@ -137,7 +137,7 @@ button.edit {
 
 button.edit:hover {
     background-color: #2C2C2D;
-    color:  #0A80F7;
+    color: #0A80F7;
     font-weight: 700;
 }
 
@@ -148,7 +148,7 @@ button.delete {
 
 button.delete:hover {
     background-color: #2C2C2D;
-    color:  #FE3C32;
+    color: #FE3C32;
     font-weight: 700;
 }
 
@@ -176,7 +176,7 @@ button.delete:hover {
     max-height: 450px;
     z-index: 999;
     background-color: #000000;
-    box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.6);
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.6);
     display: none;
 }
 
@@ -196,10 +196,11 @@ button.delete:hover {
 table {
     width: 90%;
     margin-top: 14px;
-    border-collapse : collapse;
+    border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
     padding: 10px;
     text-align: center;
     font-size: 12px;
